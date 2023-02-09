@@ -1,0 +1,19 @@
+def encrypt(text, shift):
+  new_let = ''  
+  for x in text:
+    if direction == "encode":
+      new_index = alphabet.index(x) + shift
+      new_let += alphabet[new_index]
+      if new_index > 25:
+        new_index -= len(alphabet)
+        new_let += alphabet[new_index]
+    elif direction == "decode":
+        new_index = alphabet.index(x) - shift
+        new_let += alphabet[new_index]
+        if new_index > 25:
+          new_index -= len(alphabet)
+          new_let += alphabet[new_index]
+
+  print(new_let)
+
+encrypt(text, shift)
