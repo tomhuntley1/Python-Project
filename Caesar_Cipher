@@ -1,19 +1,49 @@
-def encrypt(text, shift):
-  new_let = ''  
-  for x in text:
-    if direction == "encode":
-      new_index = alphabet.index(x) + shift
-      new_let += alphabet[new_index]
-      if new_index > 25:
-        new_index -= len(alphabet)
-        new_let += alphabet[new_index]
-    elif direction == "decode":
-        new_index = alphabet.index(x) - shift
-        new_let += alphabet[new_index]
-        if new_index > 25:
-          new_index -= len(alphabet)
-          new_let += alphabet[new_index]
+def main():
 
-  print(new_let)
+  import art
+  
+  alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+  
+  
+  
+  def caesar(start_text, shift_amount, cipher_direction):
+    go = "1"
+    if go == "1":
+      end_text = ""
+      if cipher_direction == "decode":
+        if shift_amount < len(alphabet):
+              shift_amount *= -1
+      for char in start_text:
+        if char in alphabet:
+          position = alphabet.index(char)
+          new_position = position + shift_amount
+          if new_position > len(alphabet):
+            new_position = new_position % len(alphabet)
+          end_text += alphabet[new_position]
+        else: 
+          end_text += char
+    else:
+      print("bye")
+      quit()
+          
+    print(f"Here's the {cipher_direction}d result: {end_text}")
+    restart = input("Would you like to go again:\n").lower()
+    
+    if restart == "yes":
+      go = "1"
+      main()
+    else:
+      go = "2"
+      print("Goodbye")
+      exit()
+  
+  print(art.logo)
+  
+  
+  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+  text = input("Type your message:\n").lower()
+  shift = int(input("Type the shift number:\n"))
+  
+  caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
 
-encrypt(text, shift)
+main()
