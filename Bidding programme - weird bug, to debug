@@ -1,0 +1,30 @@
+from replit import clear
+#HINT: You can call clear() to clear the output in the console.
+
+
+def total():
+
+  all_bids = []
+    
+  
+  names = input("What is your name?")
+  bids = input("What's your bid?")
+  
+  
+  def bidding(names, bids):
+ 
+    all_bids.append({"name": names, "bid": bids})
+    more = input("Is there anymore bidders?")
+    
+    if more.lower() == "yes":
+      print(all_bids)
+      
+      total()
+      
+    print(all_bids)
+
+   
+  
+  bidding(names, bids)
+
+total()
